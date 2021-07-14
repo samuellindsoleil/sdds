@@ -1,0 +1,47 @@
+// TODO: Remove this file
+// Right now used in c-cookie
+
+@import '../mixins';
+
+a {
+  color: $link-color; //IE
+  color: Var(--link-color);
+  text-decoration: $link-decoration; //IE
+  text-decoration: Var(--link-decoration);
+  background-color: $link-bg; //IE
+  background-color: Var(--link-bg);
+
+  &:hover,
+  &:active,
+  &.active,
+  &[active]:not([active="false"]) {
+    color: $link-color-hover; //IE
+    color: Var(--link-color-hover);
+    text-decoration: $link-decoration-hover; //IE
+    text-decoration: Var(--link-decoration-hover);
+    background-color: $link-bg-hover; //IE
+    background-color: Var(--link-bg-hover);
+  }
+
+  &:active,
+  &.active {
+    color: $link-color-active; //IE
+    color: Var(--link-color-active);
+  }
+}
+
+p {
+  //FIXME: Add correct rem
+  margin-bottom: 3.75rem;
+}
+
+.lead {
+  //FIXME: Add correct rem
+  font-size: 4.5rem;
+}
+
+label {
+  font-weight: bold;
+  color: get-colour(grey-400); //IE
+  color: Var(--sdds-grey-400);
+}

@@ -1,0 +1,19 @@
+.input-group,
+.input-group-text {
+  font-size: $font-size-base;
+}
+
+.input-group-text {
+  background-color: get-colour(grey-100);
+  background-color: Var(--sdds-grey-100);
+  border: 1px solid $input-border-color;
+  border-radius: $input-border-radius;
+  padding: $input-padding-y $input-padding-x;
+}
+
+.input-group-append {
+  margin-left: -2px;
+}
+.input-group-prepend {
+  margin-right: -2px;
+}

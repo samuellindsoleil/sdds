@@ -1,0 +1,10 @@
+@import './tokens';
+@import '../prefix';
+
+:root,
+html {
+  @each $key, $value in $all-colours {
+    $keyval : '' + $key;
+    --#{$prefix}-#{$keyval} : #{$value};
+  }
+}

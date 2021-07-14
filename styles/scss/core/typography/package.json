@@ -1,0 +1,21 @@
+{
+  "name": "@scania/typography",
+  "version": "1.2.0",
+  "description": "Scania Digital Design System Typography",
+  "scripts": {
+    "build": "node compile.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/scss/_typography.scss",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.29.0"
+  },
+  "gitHead": "c57c19dc8ab121f851ba2af4eaaa59e54ac5afa2"
+}

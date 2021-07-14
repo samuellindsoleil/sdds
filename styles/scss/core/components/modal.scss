@@ -1,0 +1,25 @@
+@import './modal-core';
+
+:host {
+  @include modal-host;
+}
+
+:host(.show) {
+  display: flex;
+}
+
+:host(.hide) {
+  display: none;
+}
+
+slot[name=#{$prefix}-modal-headline]::slotted(*) {
+  @include modal-headline;
+}
+
+slot[name=#{$prefix}-modal-body]::slotted(*) {
+  @include modal-body;
+}
+
+slot[name=#{$prefix}-modal-actions]::slotted(*) {
+  @include modal-actions;
+}

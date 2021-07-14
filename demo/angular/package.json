@@ -20,7 +20,9 @@
     "@angular/platform-browser": "~11.2.6",
     "@angular/platform-browser-dynamic": "~11.2.6",
     "@angular/router": "~11.2.6",
+    "@scania/css": "file:../../styles/scania-css-1.0.0.tgz",
     "@scania/typography": "^1.1.0",
+    "node-sass": "^4.14.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

@@ -1,0 +1,13 @@
+// TODO: Font-size for the text inside progressbar
+// TODO: Add variable for border-radius that is global
+
+.progress-bar {
+  @include background('primary');
+}
+
+.progress {
+  border-radius: $border-radius;
+  height: 12px; //Default height
+  //FIXME: Add correct rem
+  font-size: $spacing-element-12;
+}

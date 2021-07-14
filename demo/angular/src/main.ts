@@ -4,8 +4,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
-import { addTheme, defineCustomElements } from '@scania/components';
-import { theme as scania } from '@scania/theme-light';
+// import { addTheme, defineCustomElements } from '@scania/components';
+// import { theme as scania } from '@scania/theme-light';
 import { style } from '@angular/animations';
 
 if (environment.production) {
@@ -17,5 +17,5 @@ console.warn('This is a demo application, please visit https://digitaldesign.sca
 platformBrowserDynamic().bootstrapModule(AppModule)
 .catch(err => console.error(err));
 
-defineCustomElements();
-addTheme(scania);
+// defineCustomElements();
+// addTheme(scania);
