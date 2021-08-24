@@ -1,6 +1,6 @@
-@import '../../helpers/style-helpers.scss';
-@import '@scania/typography/dist/scss/mixins';
-@import '@scania/typography/dist/scss/tokens';
+@import '../helpers/style-helpers.scss';
+@import '../typography/mixins';
+@import '../typography/tokens';
 // @import '@scania/grid/dist/scss/grid';
 
 //TODO: Find a way to create a mixin in spacings that can be used for screen size in rem

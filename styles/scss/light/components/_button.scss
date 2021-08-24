@@ -1,4 +1,6 @@
 @import '../mixins';
+@import '../../core/prefix';
+@import '../../core/colour/colour';
 
 $btn-primary:(
   background: get-colour(blue-700),

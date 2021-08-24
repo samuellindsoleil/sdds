@@ -1,3 +1,6 @@
+@import '../../core/prefix';
+@import '../../core/colour/colour';
+
 :root,
 html {
   --#{$prefix}-card-bg: var(--sdds-white);

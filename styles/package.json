@@ -4,8 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start":  "gulp watchtask && npm run scss",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "scss": "node-sass --watch scss/light/theme/ -o css"
+    "scss": "node-sass --watch scss/light/theme/ -o css",
+    "scss-accordion": "node-sass --watch scss/light/theme/ scss/light/theme/accordion -o css",
+    "scss-button": "node-sass --watch scss/light/theme/ scss/light/theme/button -o css",
+    "scss-banner": "node-sass --watch scss/light/theme/ scss/light/theme/banner -o css",
+    "scss-breadcrumb": "node-sass --watch scss/light/theme/ scss/light/theme/breadcrumb -o css",
+    "scss-card": "node-sass --watch scss/light/theme/ scss/light/theme/card -o css",
+    "scss-checkbox": "node-sass --watch scss/light/theme/ scss/light/theme/checkbox -o css",
+    "clean": "rimraf css",
+    "scss-divider": "node-sass --watch scss/light/theme/ scss/light/theme/divider -o css",
+    "scss-link": "node-sass --watch scss/light/theme/ scss/light/theme/link -o css",
+    "scss-modal": "node-sass --watch scss/light/theme/ scss/light/theme/modal -o css",
+    "scss-radio-button": "node-sass --watch scss/light/theme/ scss/light/theme/radio-button -o css",
+    "scss-textfield": "node-sass --watch scss/light/theme/ scss/light/theme/textfield -o css",
+    "scss-toast": "node-sass --watch scss/light/theme/ scss/light/theme/toast -o css",
+    "scss-toggle": "node-sass --watch scss/light/theme/ scss/light/theme/toggle -o css",
+    "scss-header": "node-sass --watch scss/light/theme/ scss/light/theme/header -o css"
   },
   "files": [
     "css"
@@ -14,6 +30,9 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^5.0.2",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "gulp-run": "^1.7.1",
     "node-sass": "^6.0.1"
   }
 }

@@ -1,7 +1,7 @@
-@import '../../helpers/style-helpers.scss';
-@import '@scania/typography/dist/scss/mixins';
-@import '@scania/typography/dist/scss/tokens';
-@import '../divider/divider.scss';
+@import '../helpers/style-helpers.scss';
+@import '../typography/mixins';
+@import '../typography/tokens';
+@import './divider.scss';
 
 @mixin disabledStyle {
   &,

@@ -1,7 +1,6 @@
-
-@import '../../helpers/style-helpers.scss';
-@import '@scania/typography/dist/scss/mixins';
-@import '@scania/typography/dist/scss/tokens';
+@import '../helpers/style-helpers.scss';
+@import '../typography/mixins';
+@import '../typography/tokens';
 
 
 .#{$prefix}-banner {
