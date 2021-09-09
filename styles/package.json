@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":  "gulp watchtask && npm run scss",
+    "start": "gulp watchtask && npm run scss",
     "test": "echo \"Error: no test specified\" && exit 1",
     "scss": "node-sass --watch scss/light/theme/ -o css",
     "scss-accordion": "node-sass --watch scss/light/theme/ scss/light/theme/accordion -o css",
@@ -30,6 +30,7 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^5.0.2",
+    "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
     "gulp-run": "^1.7.1",
