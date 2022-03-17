@@ -6,7 +6,7 @@ export default {
   argTypes: {
     state: {
       control: {
-        type: 'select',
+        type: 'radio',
         options: ['default', 'error', 'info'],
       },
     },
