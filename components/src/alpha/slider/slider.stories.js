@@ -1,5 +1,5 @@
 export default {
-  title: 'Component/Slider',
+  title: 'Alpha/Slider',
   argTypes: {
     type: {
       control: {

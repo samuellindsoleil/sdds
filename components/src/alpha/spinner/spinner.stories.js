@@ -1,5 +1,5 @@
 export default {
-  title: 'Component/Spinner',
+  title: 'Alpha/Spinner',
   parameters: {
     layout: 'centered', // Center the component horizontally and vertically in the Canvas
   },
