@@ -6,7 +6,7 @@ import { Component, h, Prop, Element, State, Watch } from '@stencil/core';
 // So instead of a relative path we do this hack.
 import { version } from '@stencil/../../package.json';
 
-import store from '../../store';
+import store from '../store';
 
 @Component({
   tag: 'sdds-theme',
