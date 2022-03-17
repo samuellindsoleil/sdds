@@ -1,5 +1,5 @@
 import store from './store';
-import { Theme } from './components/theme/theme';
+import { Theme } from './foundations/theme';
 
 (<any>window).CorporateUi = {};
 

@@ -1,5 +1,8 @@
 export default {
   title: 'Component/Banner',
+  parameters: {
+    layout: 'fullscreen',
+  },
   argTypes: {
     state: {
       control: {
