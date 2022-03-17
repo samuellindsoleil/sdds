@@ -1,27 +1,27 @@
 // Components
-@import '../accordion/accordion.scss';
-@import '../banner/banner.scss';
-@import '../breadcrumb/breadcrumb.scss';
-@import '../button/button.scss';
-@import '../card/card.scss';
-@import '../checkbox/checkbox.scss';
-@import '../divider/divider.scss';
-@import '../link/link.scss';
-@import '../radio-button/radio-button.scss';
-@import '../textfield/textfield.scss';
-@import '../toast/toast.scss';
-@import '../toggle/toggle.scss';
-@import '../table/table.scss';
-@import '../dropdown/dropdown-select.scss';
-@import '../modal/modal-native.scss';
+@import '../components/accordion/accordion.scss';
+@import '../components/banner/banner.scss';
+@import '../components/breadcrumb/breadcrumb.scss';
+@import '../components/button/button.scss';
+@import '../components/card/card.scss';
+@import '../components/checkbox/checkbox.scss';
+@import '../components/divider/divider.scss';
+@import '../components/link/link.scss';
+@import '../components/radio-button/radio-button.scss';
+@import '../components/textfield/textfield.scss';
+@import '../components/toast/toast.scss';
+@import '../components/toggle/toggle.scss';
+@import '../components/table/table.scss';
+@import '../components/dropdown/dropdown-select.scss';
+@import '../components/modal/modal-native.scss';
 
 // Patterns
-@import '../../patterns/header/header.scss';
-@import '../../patterns/side-menu/side-menu.scss';
-@import '../../patterns/footer/footer.scss';
+@import '../patterns/header/header.scss';
+@import '../patterns/side-menu/side-menu.scss';
+@import '../patterns/footer/footer.scss';
 
 // Utility classes
-@import '../../helpers/_utility-classes.scss';
+@import '../helpers/_utility-classes.scss';
 
 * :focus {
   outline: 2px solid var(--sdds-blue-400);
