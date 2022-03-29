@@ -1,4 +1,4 @@
-import { Component, Prop, h, State, Listen } from '@stencil/core';
+import { Component, Prop, h, State, Listen, Watch } from '@stencil/core';
 
 @Component({
   tag: 'sdds-table',
@@ -14,45 +14,27 @@ export class Table {
 
   @Prop({ reflect: true }) compactDesign: boolean = false;
 
-  @Prop() bodyData = [
-    {
-      eyeColor: 'green',
-      name: 'Blanca Sexton',
-      gender: 'female',
-      company: 10,
-    },
-    {
-      eyeColor: 'brown',
-      name: 'Kaye Guerra',
-      gender: 'female',
-      company: 0,
-    },
-    {
-      eyeColor: 'blue',
-      name: 'Rhea Serrano',
-      gender: 'female',
-      company: -3,
-    },
-    {
-      eyeColor: 'brown',
-      name: 'Bishop Perkins',
-      gender: 'male',
-      company: 256,
-    },
-    {
-      eyeColor: 'blue',
-      name: 'Rivas Thomas',
-      gender: 'male',
-      company: 1,
-    },
-  ];
+  @Prop() bodyData: any;
 
-  @State() dataOptions = [];
+  @State() innerBodyData = [];
 
   @State() bodyDataManipulated = [];
 
+  @Watch('bodyData')
+  arrayDataWatcher(newValue: string) {
+    if (typeof newValue === 'string') {
+      console.log('received value is: ' + newValue);
+      this.innerBodyData = JSON.parse(newValue);
+    } else {
+      this.innerBodyData = newValue;
+    }
+    this.bodyDataManipulated = [...this.innerBodyData];
+  }
+
   componentWillLoad() {
-    this.bodyDataManipulated = this.bodyData;
+    console.log('Component will load data: ' + this.bodyData);
+    // Why is there error when passing a string that has spaces ???
+    this.arrayDataWatcher(this.bodyData.replace(/_/g, ' '));
   }
 
   // Would  be good to make a check to make sure if header is present,
