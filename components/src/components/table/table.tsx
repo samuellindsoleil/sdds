@@ -16,18 +16,38 @@ export class Table {
 
   @Prop() bodyData = [
     {
-      item1: 2,
-      item2: 'Abba',
-      item3: 'Helloo',
-      item4: 'Salt Lake City',
+      eyeColor: 'green',
+      name: 'Blanca Sexton',
+      gender: 'female',
+      company: 10,
     },
     {
-      item1: 1,
-      item2: 'Corn',
-      item3: 'Hello',
-      item4: 'Chicago',
+      eyeColor: 'brown',
+      name: 'Kaye Guerra',
+      gender: 'female',
+      company: 0,
+    },
+    {
+      eyeColor: 'blue',
+      name: 'Rhea Serrano',
+      gender: 'female',
+      company: -3,
+    },
+    {
+      eyeColor: 'brown',
+      name: 'Bishop Perkins',
+      gender: 'male',
+      company: 256,
+    },
+    {
+      eyeColor: 'blue',
+      name: 'Rivas Thomas',
+      gender: 'male',
+      company: 1,
     },
   ];
+
+  @State() dataOptions = [];
 
   @State() bodyDataManipulated = [];
 
