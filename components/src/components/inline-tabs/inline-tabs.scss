@@ -1,0 +1,79 @@
+@import '@scania/typography/dist/scss/mixins';
+@import '@scania/typography/dist/scss/tokens';
+
+.sdds-inline-tabs {
+  .sdds-inline-tabs-header {
+    display: flex;
+  }
+
+  .sdds-inline-tabs-main {
+    background-color: var(--sdds-grey-50);
+    padding: 24px 24px 48px 24px;
+
+    &--content {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+
+      &__active {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &--tab {
+    @include type-style('headline-07');
+
+    color: rgba(0, 21, 51, 0.6);
+    background-color: var(--sdds-grey-100);
+    padding: 16px;
+    min-width: 142px;
+    text-decoration: none;
+    display: block;
+    position: relative;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+
+    &:not(:last-child) {
+      border-right: 1px solid var(--sdds-grey-300);
+    }
+
+    &::after {
+      content: ' ';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      margin-left: auto;
+      width: 0%;
+      margin-right: auto;
+      height: 2px;
+      background-color: var(--sdds-grey-300);
+      transition: width 0.15s ease-in-out;
+    }
+
+    &:hover {
+      background-color: var(--sdds-grey-200);
+      color: var(--sdds-blue-958);
+    }
+
+    &__active {
+      background-color: var(--sdds-grey-50);
+      color: var(--sdds-blue-958);
+
+      &:hover {
+        background-color: var(--sdds-grey-50);
+      }
+
+      &::after {
+        width: 100%;
+        background-color: var(--sdds-blue-400);
+      }
+    }
+
+    &__disabled {
+      color: rgba(0, 21, 51, 0.38);
+      pointer-events: none;
+    }
+  }
+}
