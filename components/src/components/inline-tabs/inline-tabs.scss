@@ -2,15 +2,24 @@
 @import "@scania/typography/dist/scss/tokens";
 
 .sdds-inline-tabs {
-  .sdds-inline-tabs-header {
-    display: flex;
+  overflow: hidden;
+
+  &-header {
+    position: relative;
   }
 
+<<<<<<< HEAD
   /* testing a change */
 
   .sdds-inline-tabs-main {
     background-color: var(--sdds-grey-50);
     padding: 24px 24px 48px;
+=======
+  &-main {
+    background-color: var(--sdds-grey-50);
+    padding: 24px 24px 48px 24px;
+    min-height: 320px;
+>>>>>>> fix: (tabs) responsive stuff
 
     &--content {
       opacity: 0;
@@ -21,6 +30,70 @@
         opacity: 1;
         pointer-events: all;
       }
+    }
+  }
+
+  &-wrapper {
+    display: flex;
+    background-color: red;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &--forward {
+    width: 48px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: var(--sdds-grey-200);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+
+    &__show {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    &:hover {
+      background-color: var(--sdds-grey-300);
+    }
+
+    &:active {
+      background-color: var(--sdds-grey-400);
+    }
+  }
+
+  &--back {
+    width: 48px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--sdds-grey-200);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+
+    &__show {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    &:hover {
+      background-color: var(--sdds-grey-300);
+    }
+
+    &:active {
+      background-color: var(--sdds-grey-400);
     }
   }
 
@@ -35,6 +108,8 @@
     display: block;
     position: relative;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+    white-space: nowrap;
+    flex-shrink: 0;
 
     &:not(:last-child) {
       border-right: 1px solid var(--sdds-grey-300);
