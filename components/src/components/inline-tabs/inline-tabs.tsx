@@ -98,12 +98,16 @@ export class InlineTabs {
     );
     let best = 0;
     Array.from(navButtons).forEach((navButton: HTMLElement) => {
+      const oldStyle = navButton.style.width;
+      navButton.style.width = '';
+      const width = navButton.clientWidth;
+      navButton.style.width = oldStyle;
+
       if (navButton.clientWidth > best) {
-        best = navButton.clientWidth;
+        best = width;
       }
     });
 
-    console.log('found best button size: ' + best);
     this.buttonWidth = best;
   }
 
@@ -120,13 +124,11 @@ export class InlineTabs {
       }
     });
 
-    console.log('found best tab height: ' + best);
     this.tabHeight = best;
   }
 
   componentDidLoad() {
     const mutationObserver = new MutationObserver((/*mutations, observer*/) => {
-      console.log('mutation observer');
       const visibleTab = this.tabs.find((tab) => tab.visible);
       this._initComponent(false);
       this._calculateTabHeight();
@@ -136,7 +138,6 @@ export class InlineTabs {
 
     const resizeObserver = new ResizeObserver((entries) => {
       for (let entry of entries) {
-        console.log('resizeObserver');
         const componentWidth = entry.contentRect.width;
         let buttonsWidth = 0;
 
@@ -169,7 +170,6 @@ export class InlineTabs {
 
     resizeObserver.observe(this.navWrapperElement);
 
-    console.log('hello?');
     this._calculateButtonWidth();
     this._calculateTabHeight();
   }
@@ -222,9 +222,6 @@ export class InlineTabs {
   }
 
   _evaluateScrollButtons() {
-    //console.log(this.navWrapperElement.scrollLeft);
-    //console.log(this.scrollWidth);
-
     if (this.navWrapperElement.scrollLeft >= this.scrollWidth) {
       this.showRightScroll = false;
     } else {
