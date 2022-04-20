@@ -6,9 +6,48 @@ export default {
 };
 
 const Template = () => `
+  <style>
+    /* Style just for demo */
+    #root {
+      padding: 32px !important;
+      background-color: #fff;
+      height: 100vh;
+    }
+  </style>
+
+  <sdds-inline-tabs>
+    <div style="background-color: #f0f;" name="Tab 1" >
+      Content for tab 1<br>
+      This tabs has a lot of content so this is the one that decides the height of the container.
+      <br><br>
+      Here is some more content.
+      <br><br>
+      And here is a little bit more.
+    </div>
+
+    <div name="Tab 2">
+      Content for tab 2<br>
+      This is just a little content, but the size of the container is based to the tab with the most content.
+      <br><br>
+      This is broken until we have some fancy js to fix it.
+    </div>
+
+    <div disabled name="Tab 3">
+      Content for tab 3<br>
+      This tab is disabled, so you should not be able to see this content.
+    </div>
+
+    <div name="Tab 4">
+      Content for tab 4<br>
+      here is some content...
+    </div>
+
+  </sdds-inline-tabs>
+`;
+
+/* const Template = () => `
 
     <style>
-      /*Style just for demo*/
       #root {
         padding: 32px !important;
         background-color: #fff;
@@ -65,7 +104,7 @@ const Template = () => `
         </div>
       </div>
     </div>
-    `;
+    `;*/
 
 export const Basic = Template.bind({});
 
