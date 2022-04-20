@@ -27,7 +27,7 @@ const Template = ({ autoHeight = false }) => `
   <sdds-inline-tabs ${autoHeight ? 'height="auto"' : ''}>
     <div name="Tab 1">
       Content for tab 1<br>
-      This tabs has a lot of content so this is the one that decides the height of the container.
+      This tabs has a lot of content so this is the one that decides the height of the container if height="auto" is specified on the component.
       <br><br>
       Here is some more content.
       <br><br>
