@@ -42,6 +42,16 @@ const Template = () => `
       here is some content...
     </div>
 
+    <div name="Tab 5">
+      Content for tab 5<br>
+      here is some content...
+    </div>
+
+    <div name="Tab 6">
+      Content for tab 6<br>
+      here is some content...
+    </div>
+
   </sdds-inline-tabs>
 `;
 
