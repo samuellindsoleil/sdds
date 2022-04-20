@@ -8,18 +8,10 @@
     position: relative;
   }
 
-<<<<<<< HEAD
-  /* testing a change */
-
-  .sdds-inline-tabs-main {
-    background-color: var(--sdds-grey-50);
-    padding: 24px 24px 48px;
-=======
   &-main {
     background-color: var(--sdds-grey-50);
-    padding: 24px 24px 48px 24px;
+    padding: 24px 24px 48px;
     min-height: 320px;
->>>>>>> fix: (tabs) responsive stuff
 
     /* &--content {
       opacity: 0;
