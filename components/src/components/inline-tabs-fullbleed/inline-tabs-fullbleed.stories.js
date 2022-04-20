@@ -6,7 +6,6 @@ export default {
 };
 
 const Template = () => `
-
     <div class="sdds-inline-tabs-fullbleed">
       <a href="#" class="sdds-inline-tabs-fullbleed--tab">Tab name</a>
       <a href="#" class="sdds-inline-tabs-fullbleed--tab sdds-inline-tabs-fullbleed--tab__active">Selected tab name</a>
@@ -16,25 +15,23 @@ const Template = () => `
     `;
 
 export const Basic = Template.bind({});
-
 Basic.args = {};
 
 const AlbinTemplate = () => `
-
     <sdds-inline-tabs-fullbleed id="inline-tabs-fullbleed-example">
       <a href="#">Tab name</a>
       <a href="#">Tab name</a>
       <a href="#">Tab name</a>
       <a href="#">Tab name</a>
-    </sdds-inline-tabs-fullbleed>    
+    </sdds-inline-tabs-fullbleed>
     `;
 
-let sddsInlineTabsFullbleedDOMContentLoaded = false;
+let DOMContentLoaded = false;
 document.addEventListener('DOMContentLoaded', () => {
-  if (sddsInlineTabsFullbleedDOMContentLoaded) {
+  if (DOMContentLoaded) {
     return;
   }
-  sddsInlineTabsFullbleedDOMContentLoaded = true;
+  DOMContentLoaded = true;
 
   const links = document.querySelectorAll('#inline-tabs-fullbleed-example a');
   links.forEach((link) => {
