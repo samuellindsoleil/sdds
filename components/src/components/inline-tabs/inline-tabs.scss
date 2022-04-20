@@ -1,8 +1,13 @@
 @import "@scania/typography/dist/scss/mixins";
 @import "@scania/typography/dist/scss/tokens";
 
+sdds-inline-tabs {
+  outline: 0 !important;
+}
+
 .sdds-inline-tabs {
   overflow: hidden;
+  outline: 0;
 
   &-header {
     position: relative;
@@ -29,6 +34,7 @@
   &-wrapper {
     display: flex;
     overflow-x: scroll;
+    scrollbar-width: none;
 
     &::-webkit-scrollbar {
       display: none;
