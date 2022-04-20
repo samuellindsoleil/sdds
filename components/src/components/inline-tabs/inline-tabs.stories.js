@@ -3,9 +3,18 @@ export default {
   parameters: {
     layout: 'fullpage',
   },
+  argTypes: {
+    autoHeight: {
+      name: 'Auto height',
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: false,
+    },
+  },
 };
 
-const Template = () => `
+const Template = ({ autoHeight = false }) => `
   <style>
     /* Style just for demo */
     #root {
@@ -15,8 +24,8 @@ const Template = () => `
     }
   </style>
 
-  <sdds-inline-tabs>
-    <div style="background-color: #f0f;" name="Tab 1" >
+  <sdds-inline-tabs ${autoHeight ? 'height="auto"' : ''}>
+    <div name="Tab 1" >
       Content for tab 1<br>
       This tabs has a lot of content so this is the one that decides the height of the container.
       <br><br>
@@ -25,11 +34,9 @@ const Template = () => `
       And here is a little bit more.
     </div>
 
-    <div name="Tab 2">
+    <div default name="Tab 2">
       Content for tab 2<br>
-      This is just a little content, but the size of the container is based to the tab with the most content.
-      <br><br>
-      This is broken until we have some fancy js to fix it.
+      This is just a little content, but the size of the container is based to the tab with the most content.      
     </div>
 
     <div disabled name="Tab 3">
@@ -117,5 +124,10 @@ const Template = () => `
     `;*/
 
 export const Basic = Template.bind({});
+
+export const AutoHeight = Template.bind({});
+AutoHeight.args = {
+  autoHeight: true,
+};
 
 Basic.args = {};

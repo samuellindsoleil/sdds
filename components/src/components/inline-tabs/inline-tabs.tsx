@@ -18,6 +18,8 @@ export class InlineTabs {
 
   @Prop() defaultTab: string = '';
 
+  @Prop() height: string = '';
+
   @State() tabs: Array<any> = [];
 
   @State() showLeftScroll: boolean = false;
@@ -26,6 +28,8 @@ export class InlineTabs {
 
   @State() buttonWidth: number = 0;
 
+  @State() tabHeight: number = 0;
+
   @Method()
   async showTab(key: string) {
     this.switchToTab(key);
@@ -33,9 +37,11 @@ export class InlineTabs {
 
   startingTab: string = null;
   navWrapperElement: HTMLElement = null;
+  tabWrapperElement: HTMLElement = null;
   componentWidth: number = 0;
   buttonsWidth: number = 0;
   scrollWidth: number = 0;
+  useAutoHeight: boolean = false;
 
   _generateKeyFromName(name: string) {
     return name
@@ -44,8 +50,12 @@ export class InlineTabs {
       .toLowerCase();
   }
 
-  initComponent(createInitialState = true) {
+  _initComponent(createInitialState = true) {
     this.tabs = [];
+
+    if (this.height == 'auto') {
+      this.useAutoHeight = true;
+    }
 
     Array.from(this.host.children).map((item: HTMLElement, index) => {
       let name = item.getAttribute('name') || 'Tab ' + (index + 1);
@@ -79,10 +89,10 @@ export class InlineTabs {
   }
 
   componentWillLoad() {
-    this.initComponent();
+    this._initComponent();
   }
 
-  _calculateButtonSize() {
+  _calculateButtonWidth() {
     const navButtons = this.navWrapperElement.querySelectorAll(
       'button.sdds-inline-tabs--tab'
     );
@@ -97,15 +107,36 @@ export class InlineTabs {
     this.buttonWidth = best;
   }
 
+  _calculateTabHeight() {
+    let best = 0;
+    this.tabs.forEach((tab) => {
+      const oldStyle = tab.element.style.display;
+      tab.element.style.display = '';
+      const height = tab.element.clientHeight;
+      tab.element.style.display = oldStyle;
+
+      if (height > best) {
+        best = height;
+      }
+    });
+
+    console.log('found best tab height: ' + best);
+    this.tabHeight = best;
+  }
+
   componentDidLoad() {
     const mutationObserver = new MutationObserver((/*mutations, observer*/) => {
+      console.log('mutation observer');
       const visibleTab = this.tabs.find((tab) => tab.visible);
-      this.initComponent(false);
+      this._initComponent(false);
+      this._calculateTabHeight();
+      this._calculateButtonWidth();
       visibleTab && this.switchToTab(visibleTab.key);
     });
 
     const resizeObserver = new ResizeObserver((entries) => {
       for (let entry of entries) {
+        console.log('resizeObserver');
         const componentWidth = entry.contentRect.width;
         let buttonsWidth = 0;
 
@@ -126,6 +157,8 @@ export class InlineTabs {
           this.showLeftScroll = false;
           this.showRightScroll = false;
         }
+
+        this._calculateTabHeight();
       }
     });
 
@@ -137,7 +170,8 @@ export class InlineTabs {
     resizeObserver.observe(this.navWrapperElement);
 
     console.log('hello?');
-    this._calculateButtonSize();
+    this._calculateButtonWidth();
+    this._calculateTabHeight();
   }
 
   _setInitialState() {
@@ -212,6 +246,11 @@ export class InlineTabs {
   }
 
   render() {
+    let heightStyle = {};
+    if (this.useAutoHeight) {
+      heightStyle['height'] = this.tabHeight + 'px';
+    }
+
     return (
       <Host>
         <div class="sdds-inline-tabs">
@@ -283,7 +322,11 @@ export class InlineTabs {
               </button>
             </div>
           </nav>
-          <div class="sdds-inline-tabs-main">
+          <div
+            ref={(el) => (this.tabWrapperElement = el as HTMLElement)}
+            class="sdds-inline-tabs-main"
+            style={heightStyle}
+          >
             <slot />
           </div>
         </div>

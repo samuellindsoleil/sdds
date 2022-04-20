@@ -10,6 +10,7 @@
 | Property     | Attribute     | Description | Type     | Default |
 | ------------ | ------------- | ----------- | -------- | ------- |
 | `defaultTab` | `default-tab` |             | `string` | `''`    |
+| `height`     | `height`      |             | `string` | `''`    |
 
 
 ## Methods
