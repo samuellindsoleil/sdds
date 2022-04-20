@@ -15,39 +15,37 @@ import {
 })
 export class InlineTabs {
   @Element() host: HTMLElement;
-
-  @Prop() defaultTab: string = '';
-
-  @Prop() height: string = '';
-
-  @State() tabs: Array<any> = [];
-
+  @Prop() defaultTab: string = ''; // either use this (default-tab="...") or read attribute "default" from one of the slotted children.
+  @Prop() height: string = ''; // different height settings. right now only supports "auto", otherwise ignored
+  @State() tabs: Array<any> = []; // array with metadata for slotted children
+  @State() buttonWidth: number = 0; // current calculated width of each nav button (calculated from the largest one)
+  @State() tabHeight: number = 0; // current calculated tab height (calculated from the one with the most height)
   @State() showLeftScroll: boolean = false;
-
   @State() showRightScroll: boolean = false;
 
-  @State() buttonWidth: number = 0;
-
-  @State() tabHeight: number = 0;
-
+  // public method for switching to a tab programatically
   @Method()
   async showTab(key: string) {
     this.switchToTab(key);
   }
 
-  startingTab: string = null;
-  navWrapperElement: HTMLElement = null;
-  tabWrapperElement: HTMLElement = null;
-  componentWidth: number = 0;
-  buttonsWidth: number = 0;
-  scrollWidth: number = 0;
-  useAutoHeight: boolean = false;
+  startingTab: string = null; // name of the tab to show by default (infered from either "default-tab"-prop (on component) or "default"-prop (on a slotted child)
+  navWrapperElement: HTMLElement = null; // reference to container with nav buttons
+  tabWrapperElement: HTMLElement = null; // reference to container with slotted children
+  componentWidth: number = 0; // visible width of this component
+  buttonsWidth: number = 0; // total width of all nav items combined
+  scrollWidth: number = 0; // total amount that is possible to scroll in the nav wrapper
+  useAutoHeight: boolean = false; // set height for slotted children or not
 
   _generateKeyFromName(name: string) {
     return name
       .replace(/\s/g, '-')
       .replace(/[^a-z0-9-]/gi, '')
       .toLowerCase();
+  }
+
+  componentWillLoad() {
+    this._initComponent();
   }
 
   _initComponent(createInitialState = true) {
@@ -86,10 +84,6 @@ export class InlineTabs {
 
     createInitialState && this._setInitialState();
     this.tabs = Array.from(this.tabs);
-  }
-
-  componentWillLoad() {
-    this._initComponent();
   }
 
   _calculateButtonWidth() {
@@ -221,25 +215,27 @@ export class InlineTabs {
     this._evaluateScrollButtons();
   }
 
-  _evaluateScrollButtons() {
-    if (this.navWrapperElement.scrollLeft >= this.scrollWidth) {
-      this.showRightScroll = false;
-    } else {
-      this.showRightScroll = true;
-    }
-
-    if (this.navWrapperElement.scrollLeft <= 0) {
-      this.showLeftScroll = false;
-    } else {
-      this.showLeftScroll = true;
-    }
-  }
-
   _scrollLeft() {
     const scroll = this.navWrapperElement.scrollLeft;
     this.navWrapperElement.scrollLeft = scroll - this.buttonWidth;
 
     this._evaluateScrollButtons();
+  }
+
+  _evaluateScrollButtons() {
+    const scroll = this.navWrapperElement.scrollLeft;
+
+    if (scroll >= this.scrollWidth) {
+      this.showRightScroll = false;
+    } else {
+      this.showRightScroll = true;
+    }
+
+    if (scroll <= 0) {
+      this.showLeftScroll = false;
+    } else {
+      this.showLeftScroll = true;
+    }
   }
 
   render() {
