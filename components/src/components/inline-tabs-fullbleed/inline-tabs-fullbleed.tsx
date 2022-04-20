@@ -23,14 +23,11 @@ export class InlineTabsFullbleed {
         const componentWidth = entry.contentRect.width;
         let buttonsWidth = 0;
 
-        const navButtons = entry.target.querySelectorAll(
-          '.sdds-inline-tabs-fullbleed--tab'
-        );
-        if (navButtons) {
-          Array.from(navButtons).forEach((navButton: HTMLElement) => {
-            buttonsWidth += navButton.clientWidth;
-          });
-        }
+        const navButtons = Array.from(this.host.children);
+        navButtons.forEach((navButton: HTMLElement) => {
+          buttonsWidth += navButton.clientWidth;
+          navButton.classList.add('sdds-inline-tabs-fullbleed--tab');
+        });
 
         this.componentWidth = componentWidth;
         this.buttonsWidth = buttonsWidth;
@@ -51,11 +48,9 @@ export class InlineTabsFullbleed {
   }
 
   _calculateButtonWidth() {
-    const navButtons = this.navWrapperElement.querySelectorAll(
-      '.sdds-inline-tabs-fullbleed--tab'
-    );
     let best = 0;
-    Array.from(navButtons).forEach((navButton: HTMLElement) => {
+    const navButtons = Array.from(this.host.children);
+    navButtons.forEach((navButton: HTMLElement) => {
       const width = navButton.clientWidth;
 
       if (navButton.clientWidth > best) {
