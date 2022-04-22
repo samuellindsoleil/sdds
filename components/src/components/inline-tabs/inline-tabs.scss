@@ -114,6 +114,7 @@
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
     white-space: nowrap;
     flex-shrink: 0;
+    text-align: left;
 
     &:not(:last-child) {
       border-right: 1px solid var(--sdds-grey-300);
@@ -159,5 +160,25 @@
       color: rgb(0 21 51 / 38%);
       pointer-events: none;
     }
+  }
+}
+
+.sdds-inline-tabs-onwhite {
+  .sdds-inline-tabs--tab__active {
+    background-color: var(--sdds-grey-50);
+  }
+
+  .sdds-inline-tabs-main {
+    background-color: var(--sdds-grey-50);
+  }
+}
+
+.sdds-inline-tabs-ongrey50 {
+  .sdds-inline-tabs--tab__active {
+    background-color: var(--sdds-white);
+  }
+
+  .sdds-inline-tabs-main {
+    background-color: var(--sdds-white);
   }
 }

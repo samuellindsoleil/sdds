@@ -246,7 +246,7 @@ export class InlineTabs {
 
     return (
       <Host>
-        <div class="sdds-inline-tabs">
+        <div class="sdds-inline-tabs sdds-inline-tabs-onwhite">
           <nav class="sdds-inline-tabs-header">
             <div
               ref={(el) => (this.navWrapperElement = el as HTMLElement)}
