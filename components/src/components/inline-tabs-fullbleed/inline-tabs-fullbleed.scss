@@ -7,6 +7,18 @@
   position: relative;
   background-color: var(--sdds-grey-50);
 
+  &-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow-x: scroll;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
   &--forward {
     cursor: pointer;
     width: 48px;

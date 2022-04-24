@@ -1,11 +1,11 @@
 import { Component, Host, State, Element, h } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-inline-tabs-fullbleed',
-  styleUrl: 'inline-tabs-fullbleed.scss',
+  tag: 'sdds-navigation-tabs',
+  styleUrl: 'navigation-tabs.scss',
   shadow: true,
 })
-export class InlineTabsFullbleed {
+export class NavigationTabs {
   @Element() host: HTMLElement;
   @State() tabs: Array<any> = []; // array with metadata for slotted children
   @State() showLeftScroll: boolean = false;
@@ -19,7 +19,6 @@ export class InlineTabsFullbleed {
 
   componentDidLoad() {
     const resizeObserver = new ResizeObserver((entries) => {
-      console.log('resizeObserver ...');
       for (let entry of entries) {
         const componentWidth = entry.contentRect.width;
         let buttonsWidth = 0;
@@ -32,7 +31,7 @@ export class InlineTabsFullbleed {
             parseFloat(style.marginLeft) +
             parseFloat(style.marginRight);
 
-          navButton.classList.add('sdds-inline-tabs-fullbleed--tab');
+          navButton.classList.add('sdds-navigation-tabs--tab');
         });
 
         this.componentWidth = componentWidth;
@@ -104,19 +103,19 @@ export class InlineTabsFullbleed {
   render() {
     return (
       <Host>
-        <div class="sdds-inline-tabs-fullbleed">
+        <div class="sdds-navigation-tabs">
           <div
-            class="sdds-inline-tabs-fullbleed-wrapper"
+            class="sdds-navigation-tabs-wrapper"
             ref={(el) => (this.navWrapperElement = el as HTMLElement)}
           >
             <slot />
           </div>
-          <div class="sdds-inline-tabs-fullbleed-navigation">
+          <div class="sdds-navigation-tabs-navigation">
             <button
               class={
-                'sdds-inline-tabs-fullbleed--forward ' +
+                'sdds-navigation-tabs--forward ' +
                 (this.showRightScroll
-                  ? 'sdds-inline-tabs-fullbleed--back__show'
+                  ? 'sdds-navigation-tabs--forward__show'
                   : '')
               }
               onClick={() => this._scrollRight()}
@@ -138,10 +137,8 @@ export class InlineTabsFullbleed {
             </button>
             <button
               class={
-                'sdds-inline-tabs-fullbleed--back ' +
-                (this.showLeftScroll
-                  ? 'sdds-inline-tabs-fullbleed--back__show'
-                  : '')
+                'sdds-navigation-tabs--back ' +
+                (this.showLeftScroll ? 'sdds-navigation-tabs--back__show' : '')
               }
               onClick={() => this._scrollLeft()}
             >
