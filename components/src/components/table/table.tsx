@@ -243,8 +243,17 @@ export class Table {
   // ToDo: below is just a test concept
 
   searchFunction = (event) => {
-    const searchTerm = new RegExp(event.currentTarget.value, 'gmi');
+    const searchTerm = event.currentTarget.value;
+    console.log(searchTerm);
     const originalList = this.bodyDataManipulated;
+
+    this.bodyDataManipulated = originalList.filter((obj) =>
+      Object.keys(searchTerm).every((c) => obj[c] === searchTerm[c])
+    );
+
+    console.log(this.bodyDataManipulated);
+
+    /*
     this.bodyDataManipulated = originalList.filter((option) => {
       if (option.country) {
         const cellItem = option.driver.toLowerCase();
@@ -254,6 +263,8 @@ export class Table {
         }
       }
     });
+
+     */
   };
 
   render() {
