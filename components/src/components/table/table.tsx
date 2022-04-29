@@ -240,6 +240,22 @@ export class Table {
       </tr>
     ));
 
+  // ToDo: below is just a test concept
+
+  searchFunction = (event) => {
+    const searchTerm = new RegExp(event.currentTarget.value, 'gmi');
+    const originalList = this.bodyDataManipulated;
+    this.bodyDataManipulated = originalList.filter((option) => {
+      if (option.country) {
+        const cellItem = option.driver.toLowerCase();
+        const searchResultList = cellItem.match(searchTerm);
+        if (searchResultList) {
+          return searchResultList;
+        }
+      }
+    });
+  };
+
   render() {
     return (
       <Host selected-rows={this.multiselectArrayJSON}>
@@ -253,7 +269,13 @@ export class Table {
           }}
         >
           {this.tableTitle && (
-            <caption class="sdds-table__title">{this.tableTitle}</caption>
+            <caption class="sdds-table__title">
+              {this.tableTitle}
+              <input
+                type="text"
+                onKeyUp={(event) => this.searchFunction(event)}
+              />
+            </caption>
           )}
           <thead class="sdds-table__header">
             <tr class="sdds-table__header-row">
