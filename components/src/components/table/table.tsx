@@ -243,28 +243,36 @@ export class Table {
   // ToDo: below is just a test concept
 
   searchFunction = (event) => {
-    const searchTerm = event.currentTarget.value;
+    const searchTerm = event.currentTarget.value.toLowerCase();
     console.log(searchTerm);
     const originalList = this.bodyDataManipulated;
+
+    /*
+    this.bodyDataManipulated.filter(
+      (el) => el.country.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
+    );
+    */
 
     this.bodyDataManipulated = originalList.filter((obj) =>
       Object.keys(searchTerm).every((c) => obj[c] === searchTerm[c])
     );
 
-    console.log(this.bodyDataManipulated);
-
+    this.setBodyItem();
     /*
-    this.bodyDataManipulated = originalList.filter((option) => {
-      if (option.country) {
+    this.bodyDataManipulated = this.bodyDataManipulated.filter((option) => {
+      if (option.driver) {
         const cellItem = option.driver.toLowerCase();
         const searchResultList = cellItem.match(searchTerm);
         if (searchResultList) {
           return searchResultList;
         }
+        return originalList;
       }
     });
 
      */
+
+    console.log(this.bodyDataManipulated);
   };
 
   render() {
